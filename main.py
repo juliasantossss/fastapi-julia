@@ -1,9 +1,11 @@
 '''receitas = [
     {
-        "nome": "brownie",
-        "ingredientes": ["3 ovos", "6 colheres de açúcar", "2 xícaras de chocolate em pó"],
-        "utensilios": ["tigela", "forma"],
-        "modo_preparo": "Misture tudo e leve ao forno por 40 minutos."
+        "nome": "brigadeiro",
+        "ingredientes": ["1 caixa de leite condensado", "1 colher (sopa) de margarina sem sal", "7 colheres (sopa) de achocolatado ou 4 colheres (sopa) de chocolate em pó", "chocolate granulado"],
+        "utensilios": ["panela", "espatula", "copo medidor", "prato raso"],
+        "modo_preparo": "Em uma panela funda, acrescente o leite condensado, a margarina e o chocolate em pó.
+Cozinhe em fogo médio e mexa até que o brigadeiro comece a desgrudar da panela.
+Deixe esfriar e faça pequenas bolas com a mão passando a massa no chocolate granulado."
     },
     {
         "nome": "torta",
@@ -12,25 +14,42 @@
         "modo_preparo": "Bata tudo no liquidificador e asse por 30 minutos."
     },
     {
-        "nome": "bolo de cenoura",
-        "ingredientes": ["3 cenouras", "3 ovos", "2 xícaras de açúcar"],
-        "utensilios": ["liquidificador", "forma"],
-        "modo_preparo": "Bata os ingredientes e asse por 40 minutos."
-    },
+        "nome": "cocada",
+        "ingredientes": ["400 g de coco fresco ralado grosso", "-1 e 1/2 xícara (chá) de água", "óleo, o quanto baste para untar",
+             "2 e 1/2 xícaras (chá) de açúcar"
+              "1/4 xícara (chá) de leite condensado"],
+        "utensilios": ["colher de pau", "espatula", "panela", "ralador"],
+        "modo_preparo": "Unte uma assadeira grande com óleo.
+Reserve
+Coloque a água e o açúcar numa panela e leve ao fogo alto.
+Despeje o coco na panela com a calda e mexa.
+Acrescente o leite condensado e continue mexendo até que comece a desprender do fundo da panela.
+Retire a cocada do fogo e coloque as colheradas sobre a assadeira untada.
+Espere endurecer um pouco e retire as cocadas da assadeira com uma espátula.
+Se quiser guardar a cocada, deixe esfriar bem e guarde num recipiente com tampa."
+    }
 ]
   [
  {
-        "nome": "panqueca",
-        "ingredientes": ["2 ovos", "1 xícara de leite", "1 xícara de farinha"],
-        "utensilios": ["frigideira"],
-        "modo_preparo": "Bata tudo, despeje na frigideira e recheie a gosto."
+        "nome": "chocolate quente",
+        "ingredientes": ["1 xícara (chá) de leite", "1 colher (café) de açúcar", "1 colher (chá) rasa de amido de milho", "1/2 colher (café) de canela em pó", "1 colher (sopa) de chocolate em pó"],
+        "utensilios": ["caneca", "leiteira", "espatula"],
+        "modo_preparo": "Misture o açúcar, o chocolate, a canela, parte do leite e leve ao fogo.
+Dissolva o amido de milho no restante do leite para que ele não empelote quando for adicionado ao restante dos ingredientes.
+Adicione o leite com amido à mistura e mexa com uma colher até engrossar e ferver.
+Sirva quente."
     },
     {
-        "nome": "pudim",
-        "ingredientes": ["1 lata de leite condensado", "2 latas de leite", "3 ovos"],
-        "utensilios": ["liquidificador", "forma de pudim"],
-        "modo_preparo": "Bata, caramelize a forma e cozinhe em banho-maria."
-    },
+        "nome": "palha italiana",
+        "ingredientes": ["1 caixa de leite condensado", "1/2 colher (sopa) de margarina sem sal", "8 colheres (sopa) de chocolate em pó", "1 pacote de biscoito maisena"],
+        "utensilios": ["panela", "pincel", "colhaer de pau", "travessa", "faca"],
+        "modo_preparo": "Pique o biscoito em pedacinhos pequenos e reserve.
+Com o leite condensado, a margarina e o chocolate em pó, faça um brigadeiro.
+Assim que o brigadeiro começar a soltar do fundo da panela, misture o biscoito picado até formar uma massa, retire do fogo.
+Unte uma bancada de mármore, ou alguma superfície lisa, com margarina e despeje essa massa.
+Abra a massa, batendo com a palma das mãos.
+Deixe esfriar e corte em quadradinhos.,"
+    }
     {
         "nome": "mousse de maracujá",
         "ingredientes": ["1 lata de leite condensado", "1 lata de creme de leite", "suco de maracujá"],
@@ -122,8 +141,8 @@ from fastapi import FastAPI
 app = FastAPI()
 
 receitas = [
-     {"id":1, "nome": "bolo de chocolate", "ingredientes":["farinha","açucar","chocolate"]},
-     {"id":2, "nome":"brownie", "ingredientes":["chocolate", "manteiga", "açucar"]},
+     {"id":1, "nome": "mousse de maracuja", "ingredientes":["1 lata de leite condensado", "1 lata de creme de leite", "suco de maracujá"]},
+     {"id":2, "nome": "brigadeiro", "ingredientes":["1 caixa de leite condensado", "1 colher (sopa) de margarina sem sal", "7 colheres (sopa) de achocolatado ou 4 colheres (sopa) de chocolate em pó", "chocolate granulado"]},
 ]
 
 @app.get("/receitas/id/{id}")
@@ -140,9 +159,9 @@ app = FastAPI()
 @app.get("/receitas/id/{id}")
 def get_receita(id: int):
     if id == 1:
-        return {"id": 1, "nome": "Bolo de Chocolate", "ingredientes": ["farinha", "açúcar", "chocolate"]}
+        return {"id": 1, "nome":  "mousse de maracuja", "ingredientes":["1 lata de leite condensado", "1 lata de creme de leite", "suco de maracujá"]}
     if id == 2:
-        return {"id": 2, "nome": "Brownie", "ingredientes": ["chocolate", "manteiga", "açúcar"]}
+        return {"id": 2, "nome": "brigadeiro", "ingredientes":["1 caixa de leite condensado", "1 colher (sopa) de margarina sem sal", "7 colheres (sopa) de achocolatado ou 4 colheres (sopa) de chocolate em pó", "chocolate granulado"]}
     return {"mensagem": "Receita não encontrada"}
 
 @app.post("/receitas")
@@ -170,7 +189,7 @@ def update_receita(id: int, dados: CreateReceita):
             return receita_atualizada
         return{"mensagem": "Receita não encontrada"}
     
-    receita = ["brownie", "torta", "bolo de cenoura", "panqueca", "mousse de maracuja", "pudim"]
+    receita = ["brigadeiro", "torta", "cocada", "chocolate quente", "mousse de maracuja", "palha italiana"]
 
     def editar_nome(nome_atual, nome_alterado):
         if nome_alterado in receitas:
@@ -198,7 +217,7 @@ def update_receita(id: int, dados: CreateReceita):
             from fastapi import FastAPI
 
             app = FastAPI()
-            receitas = ["brownie", "torta", "bolo de cenoura", "panqueca", "mousse de maracuja", "pudim"]
+            receitas = ["brigadeiro", "torta", "cocada", "chocolate quente", "mousse de maracuja", "palha italiana"]
 
             @app.delete("/deletar/{nome}")
             def deletar_receita(nome: str):
